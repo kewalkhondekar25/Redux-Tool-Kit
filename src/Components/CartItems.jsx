@@ -2,12 +2,12 @@ import React from 'react'
 import { MdOutlineKeyboardArrowUp } from "react-icons/md";
 import { MdOutlineKeyboardArrowDown } from "react-icons/md";
 import { MdDelete } from "react-icons/md";
-import { removeItem } from '../Features/Cart/cartSlice';
+import { removeItem, increase, decrease } from '../Features/Cart/cartSlice';
 import { useDispatch } from 'react-redux';
 
 const CartItems = ({item}) => {
 
-    const {id, name, manufacturer, price, image} = item;
+    const {id, name, manufacturer, price, qty, image} = item;
     const dispatch = useDispatch();
   return (
     <div style={{display: 'flex', justifyContent: 'space-between', alignItems: 'center'}}>
@@ -22,9 +22,15 @@ const CartItems = ({item}) => {
             </div>
         </div>
         <div style={{display: 'flex', flexDirection: 'column', alignItems: 'center'}}>
-            <MdOutlineKeyboardArrowUp onClick={() => alert(`${id} clicked`)} />
-            <span>0</span>
-            <MdOutlineKeyboardArrowDown />
+            <MdOutlineKeyboardArrowUp onClick={() => dispatch(increase(id))} />
+            <span>{qty}</span>
+            <MdOutlineKeyboardArrowDown 
+            onClick={() => {
+                if(qty === 1){
+                    return dispatch(removeItem(id));
+                }
+                dispatch(decrease(id));
+            }} />
         </div>
     </div>
   )
