@@ -37,11 +37,14 @@ const cartSlice = createSlice({
             });
             state.amount = amount;
             state.total = price;
+        },
+        reset: (state) => {
+            state.cartItems = data;
         }
     }
 });
 
 console.log(cartSlice);
 
-export const {clearCart, removeItem, increase, decrease, calculateTotals} = cartSlice.actions;
+export const {clearCart, removeItem, increase, decrease, calculateTotals, reset} = cartSlice.actions;
 export default cartSlice.reducer;

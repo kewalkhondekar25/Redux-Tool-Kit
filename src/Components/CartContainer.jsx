@@ -1,16 +1,19 @@
-import React from 'react'
+import React, { useEffect } from 'react'
 import { useDispatch, useSelector } from 'react-redux'
-import { clearCart } from '../Features/Cart/cartSlice';
+import { clearCart, reset } from '../Features/Cart/cartSlice';
 import CartItems from './CartItems';
 
 const CartContainer = () => {
-    
+
     const dispatch = useDispatch();
     const {cartItems, amount, total} = useSelector(store => store.cart);
     if(amount < 1){
         return(
-            <h3 style={{display: 'flex', justifyContent: 'center', marginTop: '250px'}}>
-            Your Bag is Empty</h3>
+            <div style={{display: 'flex', flexDirection: 'column', justifyContent: 'center', alignItems: 'center'}}>
+                <h3 style={{marginTop: '250px'}}>
+                Your Bag is Empty</h3>
+                <button onClick={() => dispatch(reset())}>Reset</button>
+            </div>
         )
     }
   return (
