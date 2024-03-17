@@ -1,6 +1,7 @@
 import React, { useEffect } from 'react'
 import { useDispatch, useSelector } from 'react-redux'
 import { clearCart, reset } from '../Features/Cart/cartSlice';
+import { openModal } from '../Features/Modal/modalSlice';
 import CartItems from './CartItems';
 
 const CartContainer = () => {
@@ -32,7 +33,7 @@ const CartContainer = () => {
         </div>
         <button 
         style={{backgroundColor: 'red'}}
-        onClick={() => dispatch(clearCart())}
+        onClick={() => dispatch(openModal())}
         >Clear Cart</button>
     </section>
   )

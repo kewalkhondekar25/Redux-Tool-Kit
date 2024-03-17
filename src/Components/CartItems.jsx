@@ -10,7 +10,7 @@ const CartItems = ({item}) => {
     const {id, name, manufacturer, price, qty, image} = item;
     const dispatch = useDispatch();
   return (
-    <div style={{display: 'flex', justifyContent: 'space-between', alignItems: 'center'}}>
+    <div style={{display: 'flex', position: 'relative', justifyContent: 'space-between', alignItems: 'center'}}>
         <div style={{display: 'flex', padding: '50px', alignItems: 'center', gap: '50px'}}>
             <img src={image} alt={name} height={150}/>
             <div>
